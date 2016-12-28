@@ -1,0 +1,24 @@
+<div class="row" *ngIf="!hideUsernameBlock">
+    <div class="col-md-1"></div>
+    <div class="col-md-10">
+        <label>Username:</label>
+        <input type="text" class="form-control" [(ngModel)]="username" name="username">
+        <br>
+    </div>
+    <div class="col-md-1"></div>
+</div>
+<h2 class="text-center">Socket Chat</h2>
+<div *ngIf="username">
+    Current username: {{username}}
+    <br>
+    <input class="form-control" type="text" placeholder="Enter Message..." [(ngModel)]="message" name="message" (keyup.enter)="sendMessage()">
+    <br>
+    <div *ngFor="let message of messages">
+        <div class="well">
+            <strong>{{message.username}}: </strong> {{message.text}}
+        </div>
+    </div>
+</div>
+<div *ngIf="!username" class="text-center">
+    Please log in to chat.
+</div>
